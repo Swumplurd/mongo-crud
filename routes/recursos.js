@@ -1,9 +1,9 @@
 const express = require('express');
 const route = express.Router();
 
-route.get('/', (req, res) => {
-    res.send('Peticion GET para obtener los registros');
-});
+const recursoControlador = require('../control/recursoControlador');
+
+route.get('/', recursoControlador.mostrar);
 
 route.post('/create', (req, res) => {
     res.send('Peticion POST para insersion de registros');
