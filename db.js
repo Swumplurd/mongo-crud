@@ -11,7 +11,7 @@ mongoose.connect(uri, {
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Error en la conexion a MongoDB'));
 db.once('open', function callback() {
-    console.log("Conectado!");
+    console.log("Conectado a MongoDB!");
 });
 
 module.exports = db;
