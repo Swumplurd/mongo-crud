@@ -12,7 +12,7 @@
     "crud",
     "mongoose",
     "express",
-    "ejs"
+    "pug"
   ],
   "author": "swumplurd",
   "license": "ISC",
