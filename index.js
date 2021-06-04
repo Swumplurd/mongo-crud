@@ -9,10 +9,6 @@ const port = 3000;
 var logs = fs.createWriteStream(path.join(__dirname, 'logs.log'), {flags: 'a'});
 app.use(morgan('combined', {stream: logs}));
 
-//Implementacion de rutas
-const routes = require('./routes/recursos');
-app.use(routes);
-
 //Conexion a MongoDB
 const db = require('./db');
 
@@ -21,7 +17,11 @@ app.set('view engine', 'pug');
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-app.use(express.static('public'));
+app.use('/static', express.static('public'));
+
+//Implementacion de rutas
+const routes = require('./routes/recursos');
+app.use(routes);
 
 app.listen(port, () => {
     console.log(`App escuchando en: http://localhost:${port}`);

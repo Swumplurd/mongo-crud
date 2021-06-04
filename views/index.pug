@@ -1,106 +1,112 @@
 <!doctype html>
 html(lang="es")
-head
-  meta(charset="utf-8")
-  meta(name="viewport" content="width=device-width, initial-scale=1")
-  link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous")
-  link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css")
-  title Recursos Educativos Web
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous")
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css")
+    title Recursos Educativos Web
 
-body(class="bg-dark bg-gradient text-light")
-  .container
-    .row
-      .col-6.offset-3
+  body(class="bg-dark bg-gradient text-light")
+    .container
+      .row
+        .col-6.offset-3
 
-        form(action="" class="needs-validation" novalidate method="POST")
-          p(class="display-5") Datos del Recurso Web
-          .shadow-lg.p-3.mb-5.bg-secondary.bg-gradient.rounded
+          form(action="/create" class="needs-validation" novalidate method="POST")
+            p(class="display-5") Datos del Recurso Web
+            .shadow-lg.p-3.mb-5.bg-secondary.bg-gradient.rounded
 
-            .mb-3
-              label(for="nombre" class="form-label") Nombre
-              input(type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombreHelp")
-              .form-text.text-warning#nombreHelp Ingresa el nombre del recurso...
+              .mb-3
+                label(for="nombre" class="form-label") Nombre
+                input(type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombreHelp" value="" required)
+                .form-text.text-warning#nombreHelp Ingresa el nombre del recurso...
+                strong(class="invalid-feedback") Porfavor ingresa el nombre del recurso.
 
-            .mb-3
-              label(for="url" class="form-label") URL
-              input(type="text" class="form-control" id="url" name="url" aria-describedby="urlHelp")
-              .form-text.text-warning#urlHelp Ingresa la url del recurso...
+              .mb-3
+                label(for="url" class="form-label") URL
+                input(type="text" class="form-control" id="url" name="url" aria-describedby="urlHelp" value="" required)
+                .form-text.text-warning#urlHelp Ingresa la url del recurso...
+                strong(class="invalid-feedback") Porfavor ingresa la url del recurso.
 
-            .mb-3
-              label(for="categoria" class="form-label") Categoria
-              input(type="text" class="form-control" id="categoria" name="categoria" aria-describedby="categoriaHelp")
-              .form-text.text-warning#categoriaHelp Ingresa una categoria para el recurso...
+              .mb-3
+                label(for="categoria" class="form-label") Categoria
+                input(type="text" class="form-control" id="categoria" name="categoria" aria-describedby="categoriaHelp" value="" required)
+                .form-text.text-warning#categoriaHelp Ingresa una categoria para el recurso...
+                strong(class="invalid-feedback") Porfavor ingresa la categoria del recurso.
 
-            .mb-3
-              label(for="descripcion" class="form-label") Descripcion
-              input(type="text" class="form-control" id="descripcion" name="descripcion" aria-describedby="descripcionHelp")
-              .form-text.text-warning#descripcionHelp Ingresa una descripcion...
+              .mb-3
+                label(for="descripcion" class="form-label") Descripcion
+                input(type="text" class="form-control" id="descripcion" name="descripcion" aria-describedby="descripcionHelp" value="" required)
+                .form-text.text-warning#descripcionHelp Ingresa una descripcion...
+                strong(class="invalid-feedback") Porfavor ingresa la descripcion del recurso.
 
-            .d-grid 
-              button(type="submit" class="btn btn-info") Registrar Recurso
-          
-  .container
-    .row
-      .col
-        p(class="display-5") Recursos Educativos
+              .d-grid 
+                button(type="submit" class="btn btn-info") Registrar Recurso
+            
+    .container
+      .row
+        .col
+          p(class="display-5") Recursos Educativos
 
-        table(id="tablaRecursos" class="table table-dark table-striped table-hover text-center shadow-lg table-bordered mt-4")
-          thead
-            tr
-              th ID
-              th Nombre
-              th Url
-              th Categoria
-              th Descripcion
-              th Editar
-              th Borrar
+          table(id="tablaRecursos" class="table table-dark table-striped table-hover text-center shadow-lg table-bordered mt-4")
+            thead
+              tr
+                th ID
+                th Nombre
+                th Url
+                th Categoria
+                th Descripcion
+                th Editar
+                th Borrar
 
-          tbody
-            tr
-              td Posi
-              td Charly
-              td Parker
-              td Fercho
-              td Roldan
-              td
-                a(type="button" class="btn btn-outline-info bi bi-pencil")
-              td
-                a(href="" class="btn btn-outline-danger bi bi-trash")
-  
-  #modalRecurso.modal.fade(tabindex="-1" aria-labelledby="modalRecurso" aria-hidden="true")
-    .modal-dialog
-      .modal-content
+            tbody
+              tr
+                td Posi
+                td Charly
+                td Parker
+                td Fercho
+                td Roldan
+                td
+                  a(type="button" id="editar" class="btn btn-outline-info bi bi-pencil")
+                td
+                  a(href="" class="btn btn-outline-danger bi bi-trash")
+    
+    #modalRecurso.modal.fade(tabindex="-1" aria-labelledby="modalRecurso" aria-hidden="true")
+      .modal-dialog
+        .modal-content
 
-        .modal-header.bg-secondary.text-white
-          h5(class="modal-title" id="exampleModalLabel") Editar Recurso
-          button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
+          .modal-header.bg-dark.bg-gradient.text-white
+            h5(class="modal-title" id="exampleModalLabel") Editar Recurso
+            button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
 
-        .modal-body
+          .modal-body.bg-secondary.bg-gradient.text-light
 
-          form(action="" method="POST")
-            input(name="id_editar" id="id_editar" type="text" hidden)
+            form(action="" method="POST")
+              input(name="id_editar" id="id_editar" type="text" hidden)
 
-            .mb-3
-              label(for="nombre_edit" class="form-label") Nombre
-              input(type="text" class="form-control" id="nombre_edit" name="nombre_edit" aria-describedby="nombre_edit_Help")
-              #nombre_edit_Help.form-text.text-warning Ingresa el nuevo nombre...
+              .mb-3
+                label(for="nombre_edit" class="form-label") Nombre
+                input(type="text" class="form-control" id="nombre_edit" name="nombre_edit" aria-describedby="nombre_edit_Help")
+                #nombre_edit_Help.form-text.text-warning Ingresa el nuevo nombre...
 
-            .mb-3
-              label(for="url_edit" class="form-label") URL
-              input(type="text" class="form-control" id="url_edit" name="url_edit" aria-describedby="url_edit_Help")
-              #url_edit_Help.form-text.text-warning Ingresa la nueva url...
+              .mb-3
+                label(for="url_edit" class="form-label") URL
+                input(type="text" class="form-control" id="url_edit" name="url_edit" aria-describedby="url_edit_Help")
+                #url_edit_Help.form-text.text-warning Ingresa la nueva url...
 
-            .mb-3
-              label(for="categoria_edit" class="form-label") Categoria
-              input(type="text" class="form-control" id="categoria_edit" name="categoria_edit" aria-describedby="categoria_edit_Help")
-              #categoria_edit_Help.form-text.text-warning Ingresa la nueva categoria...
+              .mb-3
+                label(for="categoria_edit" class="form-label") Categoria
+                input(type="text" class="form-control" id="categoria_edit" name="categoria_edit" aria-describedby="categoria_edit_Help")
+                #categoria_edit_Help.form-text.text-warning Ingresa la nueva categoria...
 
-            .mb-3
-              label(for="descripcion_edit" class="form-label") Descripcion
-              input(type="text" class="form-control" id="descripcion_edit" name="descripcion_edit" aria-describedby="descripcion_edit_Help")
-              #descripcion_edit_Help.form-text.text-warning Ingresa una nueva descripcion...
+              .mb-3
+                label(for="descripcion_edit" class="form-label") Descripcion
+                input(type="text" class="form-control" id="descripcion_edit" name="descripcion_edit" aria-describedby="descripcion_edit_Help")
+                #descripcion_edit_Help.form-text.text-warning Ingresa una nueva descripcion...
+              
+              .d-grid
+                button(type="submit" class="btn btn-primary") Actualizar
 
-            button(type="submit" class="btn btn-primary") Actualizar
-
-  script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous")
-  script(src="public/validacion.js")
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous")
+    script(src="static/js/modalbs5.js")
+    script(src="static/js/validacion.js")

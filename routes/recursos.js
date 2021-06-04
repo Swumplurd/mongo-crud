@@ -5,9 +5,7 @@ const recursoControlador = require('../control/recursoControlador');
 
 route.get('/', recursoControlador.mostrar);
 
-route.post('/create', (req, res) => {
-    res.send('Peticion POST para insersion de registros');
-});
+route.post('/create', recursoControlador.crear);
 
 route.post('/update', (req, res) => {
     res.send('Peticion POST para actualizar registros');

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const recursoSchema = new Schema ({
-    name: String,
+    nombre: String,
     url: String,
-    category: String,
-    description: String
+    categoria: String,
+    descripcion: String
 }, {versionKey:false});
 module.exports = mongoose.model('recurso', recursoSchema);
