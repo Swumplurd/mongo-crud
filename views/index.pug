@@ -51,7 +51,6 @@ html(lang="es")
           table(id="tablaRecursos" class="table table-dark table-striped table-hover text-center shadow-lg table-bordered mt-4")
             thead
               tr
-                th ID
                 th Nombre
                 th Url
                 th Categoria
@@ -60,12 +59,14 @@ html(lang="es")
                 th Borrar
 
             tbody
+            each val in recursos
               tr
-                td Posi
-                td Charly
-                td Parker
-                td Fercho
-                td Roldan
+                td(style="display: none;")= val._id
+                td= val.nombre
+                td
+                  a(target="_blank" class="text-info" href=val.url)= val.url
+                td= val.categoria
+                td= val.descripcion
                 td
                   a(type="button" id="editar" class="btn btn-outline-info bi bi-pencil")
                 td
