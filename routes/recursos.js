@@ -9,8 +9,6 @@ route.post('/create', recursoControlador.crear);
 
 route.post('/update', recursoControlador.editar);
 
-route.get('/delete/:id', (req, res) => {
-    res.send('Peticion GET para eliminar registros')
-});
+route.get('/delete/:_id', recursoControlador.borrar);
 
 module.exports = route;

@@ -19,7 +19,7 @@ module.exports.crear = (req, res) => {
         descripcion: req.body.descripcion
     });
     recurso.save((error, recurso) => {
-        if(error){
+        if(error) {
             return res.status(500).json({
                 message: 'Error al crear recurso'
             });
@@ -35,11 +35,23 @@ module.exports.editar = (req, res) => {
     const categoria = req.body.categoria_edit;
     const descripcion = req.body.descripcion_edit;
     Recurso.findByIdAndUpdate(id, {nombre, url, categoria, descripcion}, (error, recurso) => {
-        if(error){
+        if(error) {
             return res.status(500).json({
                 message: 'Error al actualizar el recurso'
-            })
+            });
         }
         res.redirect('/');
-    })
+    });
+}
+
+module.exports.borrar = (req, res) => {
+    const id = req.params._id;
+    Recurso.findByIdAndRemove(id, (error, recurso) => {
+        if(error) {
+            return res.status(500).json({
+                message: 'Error al eliminar recurso'
+            });
+        }
+        res.redirect('/');
+    });
 }

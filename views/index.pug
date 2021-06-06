@@ -7,10 +7,10 @@ html(lang="es")
     link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css")
     title Recursos Educativos Web
 
-  body(class="bg-dark bg-gradient text-light")
+  body(class="bg-dark bg-gradient text-light" style="min-height: 100vh")
     .container
       .row
-        .col-6.offset-3
+        .col-md-12.col-sm-12.col-lg-6.offset-lg-3
 
           form(action="/create" class="needs-validation" novalidate method="POST")
             p(class="display-5") Datos del Recurso Web
@@ -36,7 +36,7 @@ html(lang="es")
 
               .mb-3
                 label(for="descripcion" class="form-label") Descripcion
-                input(type="text" class="form-control" id="descripcion" name="descripcion" aria-describedby="descripcionHelp" value="" required)
+                textarea(class="form-control" id="descripcion" name="descripcion" aria-describedby="descripcionHelp" rows="3" value="" required)
                 .form-text.text-warning#descripcionHelp Ingresa una descripcion...
                 strong(class="invalid-feedback") Porfavor ingresa la descripcion del recurso.
 
@@ -46,7 +46,7 @@ html(lang="es")
     .container
       .row
         .col
-          p(class="display-5") Recursos Educativos
+          p(class="display-5") Recursos Web
 
           table(id="tablaRecursos" class="table table-dark table-striped table-hover text-center shadow-lg table-bordered mt-4")
             thead
@@ -70,7 +70,7 @@ html(lang="es")
                 td
                   a(type="button" id="editar" class="btn btn-outline-info bi bi-pencil")
                 td
-                  a(href="" class="btn btn-outline-danger bi bi-trash")
+                  a(href=`/delete/${val._id}` class="btn btn-outline-danger bi bi-trash")
     
     #modalRecurso.modal.fade(tabindex="-1" aria-labelledby="modalRecurso" aria-hidden="true")
       .modal-dialog
@@ -102,7 +102,7 @@ html(lang="es")
 
               .mb-3
                 label(for="descripcion_edit" class="form-label") Descripcion
-                input(type="text" class="form-control" id="descripcion_edit" name="descripcion_edit" aria-describedby="descripcion_edit_Help")
+                textarea(class="form-control" id="descripcion_edit" name="descripcion_edit" aria-describedby="descripcion_edit_Help" rows="3" value="" required)
                 #descripcion_edit_Help.form-text.text-warning Ingresa una nueva descripcion...
               
               .d-grid
