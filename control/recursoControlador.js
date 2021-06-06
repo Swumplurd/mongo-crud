@@ -1,4 +1,3 @@
-const recursos = require('../model/recursos');
 const Recurso = require('../model/recursos');
 
 module.exports.mostrar = (req, res) => {
@@ -27,4 +26,20 @@ module.exports.crear = (req, res) => {
         }
         res.redirect('/');
     });
+}
+
+module.exports.editar = (req, res) => {
+    const id = req.body.id_editar;
+    const nombre = req.body.nombre_edit;
+    const url = req.body.url_edit;
+    const categoria = req.body.categoria_edit;
+    const descripcion = req.body.descripcion_edit;
+    Recurso.findByIdAndUpdate(id, {nombre, url, categoria, descripcion}, (error, recurso) => {
+        if(error){
+            return res.status(500).json({
+                message: 'Error al actualizar el recurso'
+            })
+        }
+        res.redirect('/');
+    })
 }
