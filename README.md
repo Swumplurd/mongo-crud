@@ -1,5 +1,7 @@
 # mongo-crud
 
+<img align="right" src="https://img.michollo.com/app/deal/324-1578581838484.png" height="150px">
+
 Este es un pequeño CRUD destinado a recursos educativos web usando NodeJS, Express, MongoDB y Bootstrap5
 
 ## Requisitos
